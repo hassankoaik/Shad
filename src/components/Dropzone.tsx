@@ -1,4 +1,5 @@
 "use client"
+import { cn } from '@/lib/utils';
 import DropzoneComponents from 'react-dropzone'
 
 function Dropzone() {
@@ -14,8 +15,11 @@ const maxsize=20971520
 
       const isFileTooLarge=fileRejections.length>0 && fileRejections[0].file.size>maxsize;
       return(
-    <section>
-      <div {...getRootProps()}>
+
+      <section className='m-6'>
+      <div {...getRootProps()} className={cn(
+        "w-full h-52 flex justify-center items-center p-5 border border-dashed rounded-lg text-center "
+      )}>
        <input {...getInputProps()}/> 
         {!isDragActive && "Click here or  drop a file to upload "}
         {isDragActive && !isDragReject && "Drop to upload this File!"}
